@@ -1,18 +1,88 @@
-.container-fluid {
-    padding-top: 70px;
-    padding-bottom: 70px;
+:root {
+  --primary-color: #2c3e50;  /* Deep blue-gray for main elements */
+  --secondary-color: #34495e; /* Slightly lighter shade for hover and accents */
+  --background-color: #ecf0f1; /* Light gray-white for background */
+  --text-color: #2c3e50; /* Dark text color */
+  --white-color: #ffffff; /* Pure white for contrast */
 }
-.navbar {
-    padding-top: 15px;
-    padding-bottom: 15px;
-    border: 0;
-    border-radius: 0;
-    margin-bottom: 0;
-    font-size: 12px;
-    letter-spacing: 5px;
+
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: var(--background-color);
+  color: var(--text-color);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
-.navbar-nav  li a:hover {
-    color: #1abc9c !important;
+
+header {
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  padding: 15px 0;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 10px;
+}
+
+nav ul li {
+  display: inline-block;
+  margin: 0 10px;
+}
+
+nav ul li a {
+  color: var(--white-color);
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+  color: var(--background-color);
+  text-decoration: underline;
+}
+
+main {
+  flex-grow: 1;
+  max-width: 1000px;
+  margin: 30px auto;
+  padding: 20px;
+  background-color: var(--white-color);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+h2 {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  border-bottom: 2px solid var(--secondary-color);
+  padding-bottom: 10px;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  position: relative;
+  width: 100%;
+  bottom: 0;
+}
+
+footer p {
+  margin: 0;
+  font-size: 1rem;
 }
 
 .footer-padding {
@@ -25,7 +95,7 @@
 	bottom: 0;
 	width: 100%;
 	height: 60px;
-	background-color: #1abc9c;
+  background-color: var(--primary-color);
 }
 
 .footer p {
@@ -34,6 +104,20 @@
   color: #fff;
 }
 
-.btn{
-  margin-top: 10px;
+/* Responsive Styles */
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 1.5rem;
+  }
+  
+  nav ul li {
+    display: block;
+    margin: 10px 0;
+  }
+  
+  main {
+    padding: 15px;
+  }
+
+
 }

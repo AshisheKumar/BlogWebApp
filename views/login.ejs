@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* General Styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f4f4f4; /* Light background color */
+      color: #333;
+    }
+
+    header {
+      background-color: #333; /* Dark background for header */
+      color: white;
+      padding: 15px 0;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+
+    nav ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    nav ul li {
+      display: inline-block;
+      margin: 0 10px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-size: 1rem;
+    }
+
+    nav ul li a:hover {
+      text-decoration: underline;
+    }
+
+    main {
+      max-width: 500px;
+      margin: 30px auto;
+      padding: 20px 20px;
+      background-color: white; /* White background for main content */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for content */
+      border-radius: 8px;
+    }
+
+    .form-container {
+      padding: 15px;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      color: #333;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #333; /* Footer with the same dark background as header */
+      color: white;
+      position: absolute;
+      width: 100%;
+      bottom: 0;
+    }
+
+    footer p {
+      margin: 0;
+      font-size: 1rem;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 1.5rem;
+      }
+
+      nav ul li {
+        display: block;
+        margin: 10px 0;
+      }
+
+      main {
+        width: 90%;
+      }
+    }
+
+    /* Form Styles */
+    label {
+      display: block;
+      margin: 10px 0 5px;
+      color: #333;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #000; /* Blue background for button */
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3; /* Darker blue on hover */
+    }
+
+    /* Mobile Specific Adjustments */
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 1.25rem;
+      }
+
+      main {
+        padding: 15px;
+      }
+
+      input, button {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Welcome to the Blog</h1>
+    <nav>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/api/posts">Blogs</a></li>
+        <li><a href="/api/auth/register">Register</a></li>
+        <li><a href="/api/auth/login">Login</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <div class="form-container">
+        <h2>Login</h2>
+        <form action="/api/auth/login" method="POST">
+          <label for="email">Email:</label>
+          <input type="text" id="email" name="email" required>
+          
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" required>
+          
+          <button type="submit">Login</button>
+        </form>
+      </div>
+  </main>
+
+  <footer>
+    <p>Blog Application &copy; 2024</p>
+  </footer>
+
+  <%- include('partials/footer.ejs') %>

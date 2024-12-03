@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* Color Variables */
+    :root {
+      --primary-color: #2c3e50;  /* Deep blue-gray for main elements */
+      --secondary-color: #34495e; /* Slightly lighter shade for hover and accents */
+      --background-color: #ecf0f1; /* Light gray-white for background */
+      --text-color: #2c3e50; /* Dark text color */
+      --white-color: #ffffff; /* Pure white for contrast */
+      --green-accent: #2ecc71; /* Green for create/positive actions */
+      --red-accent: #e74c3c; /* Red for delete/negative actions */
+    }
+
+    /* General Styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: var(--background-color);
+      color: var(--text-color);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    header {
+      background-color: var(--primary-color);
+      color: var(--white-color);
+      padding: 15px 0;
+      text-align: center;
+    }
+    
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+    
+    nav ul {
+      list-style-type: none;
+      padding: 0;
+      margin-top: 10px;
+    }
+    
+    nav ul li {
+      display: inline-block;
+      margin: 0 10px;
+    }
+    
+    nav ul li a {
+      color: var(--white-color);
+      text-decoration: none;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+    }
+    
+    nav ul li a:hover {
+      color: var(--background-color);
+      text-decoration: underline;
+    }
+    
+    
+   
+    
+    h1 {
+      text-align: center;
+      color:white;;
+      font-size: 2rem;
+      margin-bottom: 30px;
+      border-bottom: 2px solid var(--secondary-color);
+      padding-bottom: 10px;
+    }
+
+    a.create-post {
+      display: inline-block;
+      margin-bottom: 30px;
+      padding: 12px 20px;
+      background-color: var(--green-accent);
+      color: var(--white-color);
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 1.1rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s ease;
+    }
+
+    a.create-post:hover {
+      background-color: #27ae60;
+    }
+    
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+
+    h2 {
+      margin: 0;
+     
+      font-size: 1.5rem;
+      border-bottom: 1px solid var(--secondary-color);
+      padding-bottom: 10px;
+    }
+
+    p {
+      margin: 10px 0;
+      line-height: 1.5;
+    }
+
+    .author {
+      font-style: italic;
+      color: var(--secondary-color);
+      font-size: 0.9rem;
+    }
+
+    a {
+      color: var(--primary-color);
+      text-decoration: none;
+      margin-right: 15px;
+      transition: color 0.3s ease;
+    }
+
+    a:hover {
+      text-decoration: underline;
+      color: var(--secondary-color);
+    }
+
+    button {
+      background-color: var(--red-accent);
+      color: var(--white-color);
+      border: none;
+      padding: 8px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #c0392b;
+    }
+    
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: var(--primary-color);
+      color: var(--white-color);
+      position: relative;
+      width: 100%;
+      bottom: 0;
+    }
+    
+    footer p {
+      margin: 0;
+      font-size: 1rem;
+    }
+    
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 1.5rem;
+      }
+      
+      nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+      }
+      
+      .content {
+        padding: 15px;
+        margin: 10px;
+      }
+
+      h1 {
+        font-size: 1.5rem;
+      }
+
+      a.create-post {
+        font-size: 1rem;
+        padding: 10px 15px;
+      }
+
+      h2 {
+        font-size: 1.25rem;
+      }
+
+      button {
+        padding: 6px 12px;
+        font-size: 0.9rem;
+      }
+    }
+    .content {
+      flex-grow: 1;
+      max-width: 1000px;
+      margin: 30px auto;
+      padding: 20px;
+      background-color: var(--white-color);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Admin Panel - Blog Posts</h1>
+    <nav>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/api/posts">Posts</a></li>
+        <li><a href="/api/auth/register">Register</a></li>
+        <li><a href="/api/auth/login">Login</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="content">
+    <h2>Admin Posts</h2>
+    <a href="/api/posts/new" class="create-post">Create New Post</a>
+    <ul>
+      <% posts.forEach(post => { %>
+        <li>
+          <h2><%= post.title %></h2>
+          <p><%= post.content %></p>
+          <p class="author">Author: <%= post.author && post.author.username ? post.author.username : 'Unknown' %></p>
+          <a href="/api/posts/edit/<%= post._id %>">Edit</a>
+          <form action="/api/posts/<%= post._id %>?_method=DELETE" method="POST" style="display: inline;">
+            <button type="submit">Delete</button>
+          </form>
+        </li>
+      <% }) %>
+    </ul>
+  </div>
+
+ <footer>
+    <p>Blog Application &copy; 2024</p>
+  </footer>
+</body>
+</html>
