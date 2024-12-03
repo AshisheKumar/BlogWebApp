@@ -10,6 +10,7 @@
         "axios": "^1.7.8",
         "axois": "^0.0.1-security",
         "bcryptjs": "^2.4.3",
+        "bson": "^6.10.0",
         "cookie-parser": "^1.4.7",
         "dotenv": "^16.3.1",
         "ejs": "^3.1.10",
