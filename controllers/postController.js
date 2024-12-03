@@ -12,7 +12,7 @@ exports.createPost = async (req, res) => {
     });
 
     await post.save();
-    res.redirect('/api/posts/') // Only send one response
+    res.redirect('/api/posts/') 
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
@@ -41,7 +41,7 @@ exports.getPostsAdmin = async (req) => {
   }
 
   try {
-    // Fetch all posts with title, content, and author populated
+    
     const posts = await Post.find({})
       .select('title content author')
       .populate('author', 'username');
@@ -58,9 +58,9 @@ exports.getPosts = async (req, res) => {
     const query = { $or: [{ status: 'published' }, { author: req.user._id }] };
 
     const posts = await Post.find(query).populate('author', 'username');
-    return posts; // Return the posts instead of sending the response here
+    return posts; 
   } catch (error) {
-    console.error(error); // Log the error for debugging
+    console.error(error); 
     throw new Error('Error loading posts.');
   }
 };
@@ -77,7 +77,7 @@ exports.updatePost = async (req, res) => {
       return res.status(404).json({ message: 'Post not found' });
     }
 
-    // Admins can update any post, users can only update their own
+    
     if (req.user.role !== 'admin' && post.author.toString() !== req.user._id.toString()) {
       return res.status(403).json({ message: 'Not authorized' });
     }
@@ -102,13 +102,13 @@ exports.deletePost = async (req, res) => {
       return res.status(404).json({ message: 'Post not found' });
     }
 
-    // Admins can delete any post, users can only delete their own
+    
     if (req.user.role !== 'admin' && post.author.toString() !== req.user._id.toString()) {
       return res.status(403).json({ message: 'Not authorized' });
     }
 
     await Post.findByIdAndDelete(id);
-    res.redirect('/api/posts/') // Only send one response
+    res.redirect('/api/posts/') 
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
